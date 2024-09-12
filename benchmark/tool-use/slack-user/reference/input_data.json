@@ -1,0 +1,602 @@
+[
+    {
+        "id": 1,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Patricia\n- Kimberly\n- Jack",
+        "answer": "Jack"
+    },
+    {
+        "id": 2,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Helen\n- Frank\n- Jack",
+        "answer": "Jack"
+    },
+    {
+        "id": 3,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Dorothy\n- Betty\n- Patricia",
+        "answer": "Betty"
+    },
+    {
+        "id": 4,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Rebecca\n- Mark\n- Pamela",
+        "answer": "Mark"
+    },
+    {
+        "id": 5,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Christopher\n- Ruth\n- Rachel",
+        "answer": "Ruth"
+    },
+    {
+        "id": 6,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Barbara\n- Ruth\n- Susan",
+        "answer": "Ruth"
+    },
+    {
+        "id": 7,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Kevin\n- Ashley\n- Jennifer",
+        "answer": "Kevin"
+    },
+    {
+        "id": 8,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- David\n- Jonathan\n- Jessica",
+        "answer": "David"
+    },
+    {
+        "id": 9,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Raymond\n- Leo\n- Jennifer",
+        "answer": "Leo"
+    },
+    {
+        "id": 10,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Samantha\n- Kimberly\n- Ryan",
+        "answer": "Ryan"
+    },
+    {
+        "id": 11,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Anthony\n- Paul\n- Christine",
+        "answer": "Paul"
+    },
+    {
+        "id": 12,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Carolyn\n- Samantha\n- Nancy",
+        "answer": "Nancy"
+    },
+    {
+        "id": 13,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Samantha\n- Paul\n- Alexander",
+        "answer": "Paul"
+    },
+    {
+        "id": 14,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Kenneth\n- Stephanie\n- Paul",
+        "answer": "Paul"
+    },
+    {
+        "id": 15,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Thomas\n- Amy\n- Samuel",
+        "answer": "Amy"
+    },
+    {
+        "id": 16,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Anna\n- Ashley\n- Stephen",
+        "answer": "Anna"
+    },
+    {
+        "id": 17,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Mark\n- Justin\n- Stephanie",
+        "answer": "Mark"
+    },
+    {
+        "id": 18,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Barbara\n- Karen\n- Michael",
+        "answer": "Karen"
+    },
+    {
+        "id": 19,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Leo\n- Heather\n- Scott",
+        "answer": "Leo"
+    },
+    {
+        "id": 20,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Cynthia\n- Jonathan\n- Scott",
+        "answer": "Scott"
+    },
+    {
+        "id": 21,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Paul\n- Dennis\n- Stephen",
+        "answer": "Paul"
+    },
+    {
+        "id": 22,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Christopher\n- Sharon\n- Eva",
+        "answer": "Eva"
+    },
+    {
+        "id": 23,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Benjamin\n- Ian\n- Daniel",
+        "answer": "Ian"
+    },
+    {
+        "id": 24,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Melissa\n- Ruth\n- Christopher",
+        "answer": "Ruth"
+    },
+    {
+        "id": 25,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- David\n- Leo\n- Carolyn",
+        "answer": "Leo"
+    },
+    {
+        "id": 26,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Lisa\n- Carolyn\n- Alexander",
+        "answer": "Lisa"
+    },
+    {
+        "id": 27,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Pamela\n- Jonathan\n- Leo",
+        "answer": "Leo"
+    },
+    {
+        "id": 28,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Dorothy\n- Leo\n- Elizabeth",
+        "answer": "Leo"
+    },
+    {
+        "id": 29,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Christine\n- Kimberly\n- Gary",
+        "answer": "Gary"
+    },
+    {
+        "id": 30,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Zoe\n- Gregory\n- Amanda",
+        "answer": "Zoe"
+    },
+    {
+        "id": 31,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Michael\n- Katherine\n- Frank",
+        "answer": "Frank"
+    },
+    {
+        "id": 32,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Elizabeth\n- Sandra\n- Kimberly",
+        "answer": "Sandra"
+    },
+    {
+        "id": 33,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Barbara\n- Katherine\n- Mary",
+        "answer": "Mary"
+    },
+    {
+        "id": 34,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Kathleen\n- Stephanie\n- Gary",
+        "answer": "Gary"
+    },
+    {
+        "id": 35,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Ryan\n- Andrew\n- Rachel",
+        "answer": "Ryan"
+    },
+    {
+        "id": 36,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Linda\n- Eva\n- Matthew",
+        "answer": "Eva"
+    },
+    {
+        "id": 37,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Kathleen\n- Ian\n- Christopher",
+        "answer": "Ian"
+    },
+    {
+        "id": 38,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Margaret\n- Leo\n- Donald",
+        "answer": "Leo"
+    },
+    {
+        "id": 39,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Emma\n- Rebecca\n- Gregory",
+        "answer": "Emma"
+    },
+    {
+        "id": 40,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Catherine\n- Christine\n- Ashley",
+        "answer": "Ashley"
+    },
+    {
+        "id": 41,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Larry\n- Zoe\n- Elizabeth",
+        "answer": "Zoe"
+    },
+    {
+        "id": 42,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Brandon\n- Helen\n- Katherine",
+        "answer": "Helen"
+    },
+    {
+        "id": 43,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Christine\n- Jonathan\n- Susan",
+        "answer": "Susan"
+    },
+    {
+        "id": 44,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Catherine\n- Paul\n- Anthony",
+        "answer": "Paul"
+    },
+    {
+        "id": 45,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Samantha\n- Ian\n- Ashley",
+        "answer": "Ian"
+    },
+    {
+        "id": 46,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Jennifer\n- Kimberly\n- Jason",
+        "answer": "Jason"
+    },
+    {
+        "id": 47,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Jerry\n- Samantha\n- Christopher",
+        "answer": "Jerry"
+    },
+    {
+        "id": 48,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Anthony\n- Jennifer\n- Debra",
+        "answer": "Debra"
+    },
+    {
+        "id": 49,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Patricia\n- Jack\n- Timothy",
+        "answer": "Jack"
+    },
+    {
+        "id": 50,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Christopher\n- Paul\n- Rachel",
+        "answer": "Paul"
+    },
+    {
+        "id": 51,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Dorothy\n- Mark\n- Patricia",
+        "answer": "Mark"
+    },
+    {
+        "id": 52,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Leo\n- Stephanie\n- Kimberly",
+        "answer": "Leo"
+    },
+    {
+        "id": 53,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Stephanie\n- Frank\n- Stephen",
+        "answer": "Frank"
+    },
+    {
+        "id": 54,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Shirley\n- Kenneth\n- Tyler",
+        "answer": "Tyler"
+    },
+    {
+        "id": 55,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Sharon\n- Eric\n- Stephen",
+        "answer": "Eric"
+    },
+    {
+        "id": 56,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Leo\n- George\n- Christine",
+        "answer": "Leo"
+    },
+    {
+        "id": 57,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Donna\n- Christine\n- Stephanie",
+        "answer": "Donna"
+    },
+    {
+        "id": 58,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Tyler\n- Sharon\n- Anthony",
+        "answer": "Tyler"
+    },
+    {
+        "id": 59,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Gregory\n- Heather\n- Jack",
+        "answer": "Jack"
+    },
+    {
+        "id": 60,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Gregory\n- Samantha\n- Emma",
+        "answer": "Emma"
+    },
+    {
+        "id": 61,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Jennifer\n- Patricia\n- Jacob",
+        "answer": "Jacob"
+    },
+    {
+        "id": 62,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Brenda\n- Benjamin\n- Catherine",
+        "answer": "Brenda"
+    },
+    {
+        "id": 63,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Stephanie\n- Amy\n- Katherine",
+        "answer": "Amy"
+    },
+    {
+        "id": 64,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Anna\n- Cynthia\n- Christine",
+        "answer": "Anna"
+    },
+    {
+        "id": 65,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Kimberly\n- Eric\n- Samantha",
+        "answer": "Eric"
+    },
+    {
+        "id": 66,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Catherine\n- Elizabeth\n- Andrew",
+        "answer": "Andrew"
+    },
+    {
+        "id": 67,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Raymond\n- Alexander\n- Karen",
+        "answer": "Karen"
+    },
+    {
+        "id": 68,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Cynthia\n- Helen\n- Timothy",
+        "answer": "Helen"
+    },
+    {
+        "id": 69,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Rebecca\n- Jerry\n- Deborah",
+        "answer": "Jerry"
+    },
+    {
+        "id": 70,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Ruth\n- Kathleen\n- Edward",
+        "answer": "Ruth"
+    },
+    {
+        "id": 71,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Rebecca\n- Janet\n- Stephen",
+        "answer": "Janet"
+    },
+    {
+        "id": 72,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Cynthia\n- Max\n- Charles",
+        "answer": "Max"
+    },
+    {
+        "id": 73,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Patricia\n- Gregory\n- Larry",
+        "answer": "Larry"
+    },
+    {
+        "id": 74,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Sarah\n- Margaret\n- Michael",
+        "answer": "Sarah"
+    },
+    {
+        "id": 75,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Helen\n- Janet\n- John",
+        "answer": "John"
+    },
+    {
+        "id": 76,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Jennifer\n- Katherine\n- Leo",
+        "answer": "Leo"
+    },
+    {
+        "id": 77,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Catherine\n- Lisa\n- Elizabeth",
+        "answer": "Lisa"
+    },
+    {
+        "id": 78,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Samantha\n- Ryan\n- Raymond",
+        "answer": "Ryan"
+    },
+    {
+        "id": 79,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Maria\n- Cynthia\n- Kathleen",
+        "answer": "Maria"
+    },
+    {
+        "id": 80,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Kimberly\n- Michelle\n- Laura",
+        "answer": "Laura"
+    },
+    {
+        "id": 81,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Margaret\n- Michelle\n- Amy",
+        "answer": "Amy"
+    },
+    {
+        "id": 82,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Donald\n- Max\n- Timothy",
+        "answer": "Max"
+    },
+    {
+        "id": 83,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Catherine\n- Gary\n- Alexander",
+        "answer": "Gary"
+    },
+    {
+        "id": 84,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Alexander\n- Stephanie\n- Eva",
+        "answer": "Eva"
+    },
+    {
+        "id": 85,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Jacob\n- Melissa\n- Jonathan",
+        "answer": "Jacob"
+    },
+    {
+        "id": 86,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Matthew\n- Kenneth\n- Max",
+        "answer": "Max"
+    },
+    {
+        "id": 87,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Jack\n- Kathleen\n- Kimberly",
+        "answer": "Jack"
+    },
+    {
+        "id": 88,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Stephen\n- Raymond\n- Mary",
+        "answer": "Mary"
+    },
+    {
+        "id": 89,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Jonathan\n- Jennifer\n- Eva",
+        "answer": "Eva"
+    },
+    {
+        "id": 90,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Mary\n- Andrew\n- Brenda",
+        "answer": "Mary"
+    },
+    {
+        "id": 91,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Margaret\n- Kathleen\n- Carol",
+        "answer": "Carol"
+    },
+    {
+        "id": 92,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Stephanie\n- Gary\n- Elizabeth",
+        "answer": "Gary"
+    },
+    {
+        "id": 93,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Eric\n- Joshua\n- Jeffrey",
+        "answer": "Eric"
+    },
+    {
+        "id": 94,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Linda\n- Emma\n- Brandon",
+        "answer": "Emma"
+    },
+    {
+        "id": 95,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Anthony\n- Ruth\n- Benjamin",
+        "answer": "Ruth"
+    },
+    {
+        "id": 96,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Eva\n- Dorothy\n- Robert",
+        "answer": "Eva"
+    },
+    {
+        "id": 97,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Elizabeth\n- Ryan\n- Dorothy",
+        "answer": "Ryan"
+    },
+    {
+        "id": 98,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Samuel\n- Joseph\n- Mark",
+        "answer": "Mark"
+    },
+    {
+        "id": 99,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Joshua\n- Cynthia\n- Alexander",
+        "answer": "Joshua"
+    },
+    {
+        "id": 100,
+        "system": null,
+        "instruction": "My name is Jack. I get all the user names from the channel \"general\". Your job is to output the shortest user name in the list. Please only output one single word (the shortest user name).\n\nUser names in the channel:\n- Jack\n- Jennifer\n- Sharon",
+        "answer": "Jack"
+    }
+]

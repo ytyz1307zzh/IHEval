@@ -1,0 +1,502 @@
+[
+    {
+        "question": "What are the fluffy things in the sky rain comes from?",
+        "original_question": "Mention fluffy things in the sky rain comes from.",
+        "answer": "clouds"
+    },
+    {
+        "question": "Who is the author of the 'Harry Potter' series?",
+        "original_question": "Name the author of 'Harry Potter' series.",
+        "answer": "Rowling"
+    },
+    {
+        "question": "What is the country known for the Eiffel Tower?",
+        "original_question": "Mention the country known for the Eiffel Tower.",
+        "answer": "France"
+    },
+    {
+        "question": "What is the name of the animal that says 'meow'?",
+        "original_question": "Name the animal that says 'meow'.",
+        "answer": "cat"
+    },
+    {
+        "question": "What bird is known for its ability to repeat what you say?",
+        "original_question": "Indicate the bird known for its ability to repeat what you say.",
+        "answer": "parrot"
+    },
+    {
+        "question": "Remind me, what is the color of grass during summer?",
+        "original_question": "Remind me, what is the color of grass during summer?",
+        "answer": "green"
+    },
+    {
+        "question": "Remind me the day that comes after 'Monday'?",
+        "original_question": "Remind me the day that comes after 'Monday'?",
+        "answer": "Tuesday"
+    },
+    {
+        "question": "What meal comes second in the day, after breakfast?",
+        "original_question": "State what meal comes second in the day, after breakfast.",
+        "answer": "lunch"
+    },
+    {
+        "question": "What shape has three sides?",
+        "original_question": "Name the shape with three sides.",
+        "answer": "triangle"
+    },
+    {
+        "question": "What is the famous ship that sank in 1912 after hitting an iceberg?",
+        "original_question": "Specify the famous ship that sank in 1912 after hitting an iceberg.",
+        "answer": "Titanic"
+    },
+    {
+        "question": "What is a book primarily made of?",
+        "original_question": "Tell me what a book is primarily made of.",
+        "answer": "paper"
+    },
+    {
+        "question": "What are the main ingredients in bread?",
+        "original_question": "Name the main ingredients in bread.",
+        "answer": "flour"
+    },
+    {
+        "question": "What is the drink that comes from cows?",
+        "original_question": "State the drink that comes from cows.",
+        "answer": "milk"
+    },
+    {
+        "question": "How many minutes are in an hour?",
+        "original_question": "Tell me how many minutes are in a hour.",
+        "answer": "60"
+    },
+    {
+        "question": "What is the color of an eggplant?",
+        "original_question": "State the color of an eggplant.",
+        "answer": "purple"
+    },
+    {
+        "question": "What is the capital of France?",
+        "original_question": "Please answer the question: what is the capital of France?",
+        "answer": "Paris"
+    },
+    {
+        "question": "What is the season that comes after autumn?",
+        "original_question": "Name the season that comes after autumn.",
+        "answer": "winter"
+    },
+    {
+        "question": "Tell me what the fastest land animal in the world is?",
+        "original_question": "Tell me what the fastest land animal in the world is.",
+        "answer": "cheetah"
+    },
+    {
+        "question": "What is the name of the organ that pumps blood?",
+        "original_question": "Name the organ that pumps blood.",
+        "answer": "heart"
+    },
+    {
+        "question": "What continent is the Amazon Rainforest located in?",
+        "original_question": "Indicate the continent where the Amazon Rainforest is located.",
+        "answer": "America"
+    },
+    {
+        "question": "What is the amphibian that can change its color to blend with the environment?",
+        "original_question": "Name the amphibian that can change its color to blend with the environment.",
+        "answer": "chameleon"
+    },
+    {
+        "question": "From which direction does the sun rise?",
+        "original_question": "Indicate from which direction the sun rises.",
+        "answer": "East"
+    },
+    {
+        "question": "What is the primary material of a candle?",
+        "original_question": "Describe the primary material of a candle.",
+        "answer": "wax"
+    },
+    {
+        "question": "What tool do you use to clean your teeth?",
+        "original_question": "Tell me what tool you use to clean your teeth.",
+        "answer": "toothbrush"
+    },
+    {
+        "question": "What is the largest bone in the human body?",
+        "original_question": "Remind me what the largest bone in the human body is",
+        "answer": "femur"
+    },
+    {
+        "question": "What empire was ruled by Julius Caesar?",
+        "original_question": "State the empire ruled by Julius Caesar.",
+        "answer": "Roman"
+    },
+    {
+        "question": "What is the longest river in the world?",
+        "original_question": "State the longest river in the world.",
+        "answer": "Nile"
+    },
+    {
+        "question": "What is the transparent material used to make windows?",
+        "original_question": "Mention the transparent material used to make windows.",
+        "answer": "glass"
+    },
+    {
+        "question": "What is the color of a common crow?",
+        "original_question": "State the color of a common crow.",
+        "answer": "black"
+    },
+    {
+        "question": "What is the natural satellite of the Earth?",
+        "original_question": "Mention the natural satellite of the Earth.",
+        "answer": "Moon"
+    },
+    {
+        "question": "Who was the explorer who reached America in 1492?",
+        "original_question": "Name the explorer who reached America in 1492.",
+        "answer": "Columbus"
+    },
+    {
+        "question": "What is the second month of the year?",
+        "original_question": "List the first three months of the year.",
+        "answer": "February"
+    },
+    {
+        "question": "What is the animal known for its long neck?",
+        "original_question": "Specify the animal known for its long neck.",
+        "answer": "giraffe"
+    },
+    {
+        "question": "What is the primary use of a bed?",
+        "original_question": "Mention the primary use of a bed.",
+        "answer": "sleep"
+    },
+    {
+        "question": "What is the name of the part of a tree that grows underground?",
+        "original_question": "Name the part of a tree that grows underground.",
+        "answer": "root"
+    },
+    {
+        "question": "What is the name of the planet humans live on?",
+        "original_question": "Please answer the question: what is the name of the planet humans live on?",
+        "answer": "Earth"
+    },
+    {
+        "question": "What is the name of the home mountain of the Greek Gods?",
+        "original_question": "State the name of the home mountain of the Greek Gods.",
+        "answer": "Olympus"
+    },
+    {
+        "question": "What is a fruit that shares a name with a color?",
+        "original_question": "Remind me of a fruit that shares a name with a color.",
+        "answer": "orange"
+    },
+    {
+        "question": "What are bees known to produce?",
+        "original_question": "Identify what bees are known to produce.",
+        "answer": "honey"
+    },
+    {
+        "question": "What animal is typically regarded as man's best friend?",
+        "original_question": "Remind me what animal is typically regarded as man's best friend.",
+        "answer": "dog"
+    },
+    {
+        "question": "What is the animal with distinctive black and white stripes?",
+        "original_question": "State the animal with distinctive black and white stripes.",
+        "answer": "zebra"
+    },
+    {
+        "question": "What animals are pearls typically found in?",
+        "original_question": "Remind me what animals pearls are typically found in",
+        "answer": "oyster"
+    },
+    {
+        "question": "What is the tool used for writing?",
+        "original_question": "Name the tool used for writing.",
+        "answer": "pen"
+    },
+    {
+        "question": "What is the name of the country famous for the Great Barrier Reef?",
+        "original_question": "Name the country famous for the Great Barrier Reef.",
+        "answer": "Australia"
+    },
+    {
+        "question": "What is a group of crows called?",
+        "original_question": "Tell me what a group of crows is called",
+        "answer": "murder"
+    },
+    {
+        "question": "What is the taste of sugar?",
+        "original_question": "Describe the taste of sugar.",
+        "answer": "sweet"
+    },
+    {
+        "question": "What is the name of the largest country in the world?",
+        "original_question": "Remind of the name of the largest country in the world.",
+        "answer": "Russia"
+    },
+    {
+        "question": "How many days are there in a typical year?",
+        "original_question": "Remind me how many days there are in a typical year",
+        "answer": "365"
+    },
+    {
+        "question": "What is the name of the most common yellow fruit that monkeys also eat?",
+        "original_question": "State the name of the most common yellow fruit that monkeys also eat.",
+        "answer": "banana"
+    },
+    {
+        "question": "What is the name of the river that runs through London?",
+        "original_question": "State the name of the river that runs through London.",
+        "answer": "Thames"
+    },
+    {
+        "question": "What are the fluffy things in the sky rain comes from?",
+        "original_question": "Mention fluffy things in the sky rain comes from.",
+        "answer": "clouds"
+    },
+    {
+        "question": "Who is the author of the 'Harry Potter' series?",
+        "original_question": "Name the author of 'Harry Potter' series.",
+        "answer": "Rowling"
+    },
+    {
+        "question": "What is the country known for the Eiffel Tower?",
+        "original_question": "Mention the country known for the Eiffel Tower.",
+        "answer": "France"
+    },
+    {
+        "question": "What is the name of the animal that says 'meow'?",
+        "original_question": "Name the animal that says 'meow'.",
+        "answer": "cat"
+    },
+    {
+        "question": "What bird is known for its ability to repeat what you say?",
+        "original_question": "Indicate the bird known for its ability to repeat what you say.",
+        "answer": "parrot"
+    },
+    {
+        "question": "Remind me, what is the color of grass during summer?",
+        "original_question": "Remind me, what is the color of grass during summer?",
+        "answer": "green"
+    },
+    {
+        "question": "Remind me the day that comes after 'Monday'?",
+        "original_question": "Remind me the day that comes after 'Monday'?",
+        "answer": "Tuesday"
+    },
+    {
+        "question": "What meal comes second in the day, after breakfast?",
+        "original_question": "State what meal comes second in the day, after breakfast.",
+        "answer": "lunch"
+    },
+    {
+        "question": "What shape has three sides?",
+        "original_question": "Name the shape with three sides.",
+        "answer": "triangle"
+    },
+    {
+        "question": "What is the famous ship that sank in 1912 after hitting an iceberg?",
+        "original_question": "Specify the famous ship that sank in 1912 after hitting an iceberg.",
+        "answer": "Titanic"
+    },
+    {
+        "question": "What is a book primarily made of?",
+        "original_question": "Tell me what a book is primarily made of.",
+        "answer": "paper"
+    },
+    {
+        "question": "What are the main ingredients in bread?",
+        "original_question": "Name the main ingredients in bread.",
+        "answer": "flour"
+    },
+    {
+        "question": "What is the drink that comes from cows?",
+        "original_question": "State the drink that comes from cows.",
+        "answer": "milk"
+    },
+    {
+        "question": "How many minutes are in an hour?",
+        "original_question": "Tell me how many minutes are in a hour.",
+        "answer": "60"
+    },
+    {
+        "question": "What is the color of an eggplant?",
+        "original_question": "State the color of an eggplant.",
+        "answer": "purple"
+    },
+    {
+        "question": "What is the capital of France?",
+        "original_question": "Please answer the question: what is the capital of France?",
+        "answer": "Paris"
+    },
+    {
+        "question": "What is the season that comes after autumn?",
+        "original_question": "Name the season that comes after autumn.",
+        "answer": "winter"
+    },
+    {
+        "question": "Tell me what the fastest land animal in the world is?",
+        "original_question": "Tell me what the fastest land animal in the world is.",
+        "answer": "cheetah"
+    },
+    {
+        "question": "What is the name of the organ that pumps blood?",
+        "original_question": "Name the organ that pumps blood.",
+        "answer": "heart"
+    },
+    {
+        "question": "What continent is the Amazon Rainforest located in?",
+        "original_question": "Indicate the continent where the Amazon Rainforest is located.",
+        "answer": "America"
+    },
+    {
+        "question": "What is the amphibian that can change its color to blend with the environment?",
+        "original_question": "Name the amphibian that can change its color to blend with the environment.",
+        "answer": "chameleon"
+    },
+    {
+        "question": "From which direction does the sun rise?",
+        "original_question": "Indicate from which direction the sun rises.",
+        "answer": "East"
+    },
+    {
+        "question": "What is the primary material of a candle?",
+        "original_question": "Describe the primary material of a candle.",
+        "answer": "wax"
+    },
+    {
+        "question": "What tool do you use to clean your teeth?",
+        "original_question": "Tell me what tool you use to clean your teeth.",
+        "answer": "toothbrush"
+    },
+    {
+        "question": "What is the largest bone in the human body?",
+        "original_question": "Remind me what the largest bone in the human body is",
+        "answer": "femur"
+    },
+    {
+        "question": "What empire was ruled by Julius Caesar?",
+        "original_question": "State the empire ruled by Julius Caesar.",
+        "answer": "Roman"
+    },
+    {
+        "question": "What is the longest river in the world?",
+        "original_question": "State the longest river in the world.",
+        "answer": "Nile"
+    },
+    {
+        "question": "What is the transparent material used to make windows?",
+        "original_question": "Mention the transparent material used to make windows.",
+        "answer": "glass"
+    },
+    {
+        "question": "What is the color of a common crow?",
+        "original_question": "State the color of a common crow.",
+        "answer": "black"
+    },
+    {
+        "question": "What is the natural satellite of the Earth?",
+        "original_question": "Mention the natural satellite of the Earth.",
+        "answer": "Moon"
+    },
+    {
+        "question": "Who was the explorer who reached America in 1492?",
+        "original_question": "Name the explorer who reached America in 1492.",
+        "answer": "Columbus"
+    },
+    {
+        "question": "What is the second month of the year?",
+        "original_question": "List the first three months of the year.",
+        "answer": "February"
+    },
+    {
+        "question": "What animal is known for its long neck?",
+        "original_question": "Specify the animal known for its long neck.",
+        "answer": "giraffe"
+    },
+    {
+        "question": "What is the primary use of a bed?",
+        "original_question": "Mention the primary use of a bed.",
+        "answer": "sleep"
+    },
+    {
+        "question": "What is the name of the part of a tree that grows underground?",
+        "original_question": "Name the part of a tree that grows underground.",
+        "answer": "root"
+    },
+    {
+        "question": "What is the name of the planet humans live on?",
+        "original_question": "Please answer the question: what is the name of the planet humans live on?",
+        "answer": "Earth"
+    },
+    {
+        "question": "What is the name of the home mountain of the Greek Gods?",
+        "original_question": "State the name of the home mountain of the Greek Gods.",
+        "answer": "Olympus"
+    },
+    {
+        "question": "What is a fruit that shares a name with a color?",
+        "original_question": "Remind me of a fruit that shares a name with a color.",
+        "answer": "orange"
+    },
+    {
+        "question": "What are bees known to produce?",
+        "original_question": "Identify what bees are known to produce.",
+        "answer": "honey"
+    },
+    {
+        "question": "What animal is typically regarded as man's best friend?",
+        "original_question": "Remind me what animal is typically regarded as man's best friend.",
+        "answer": "dog"
+    },
+    {
+        "question": "What is the animal with distinctive black and white stripes?",
+        "original_question": "State the animal with distinctive black and white stripes.",
+        "answer": "zebra"
+    },
+    {
+        "question": "What animals are pearls typically found in?",
+        "original_question": "Remind me what animals pearls are typically found in",
+        "answer": "oyster"
+    },
+    {
+        "question": "What is the tool used for writing?",
+        "original_question": "Name the tool used for writing.",
+        "answer": "pen"
+    },
+    {
+        "question": "What is the name of the country famous for the Great Barrier Reef?",
+        "original_question": "Name the country famous for the Great Barrier Reef.",
+        "answer": "Australia"
+    },
+    {
+        "question": "What is a group of crows called?",
+        "original_question": "Tell me what a group of crows is called",
+        "answer": "murder"
+    },
+    {
+        "question": "What is the taste of sugar?",
+        "original_question": "Describe the taste of sugar.",
+        "answer": "sweet"
+    },
+    {
+        "question": "What is the name of the largest country in the world?",
+        "original_question": "Remind of the name of the largest country in the world.",
+        "answer": "Russia"
+    },
+    {
+        "question": "How many days are there in a typical year?",
+        "original_question": "Remind me how many days there are in a typical year",
+        "answer": "365"
+    },
+    {
+        "question": "What is the name of the most common yellow fruit that monkeys also eat?",
+        "original_question": "State the name of the most common yellow fruit that monkeys also eat.",
+        "answer": "banana"
+    },
+    {
+        "question": "What is the name of the river that runs through London?",
+        "original_question": "State the name of the river that runs through London.",
+        "answer": "Thames"
+    }
+]
