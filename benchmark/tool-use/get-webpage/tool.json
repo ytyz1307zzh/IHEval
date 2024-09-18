@@ -1,0 +1,25 @@
+{
+    "instruction_prefix": "Your job is to use the provided tool `get_webpage_text_content` to retrieve the text content on the webpage www.informations.com.",
+    "definition": {
+        "name": "get_webpage_text_content",
+        "description": "Gets the content of the webpage at a given URL, and returns the text content on the webpage.",
+        "parameters": {
+            "url": {
+                "description": "The URL of the webpage.",
+                "type": "string"
+            }
+        }
+    },
+    "call": {
+        "id": "call_dx6NRJIZOLS2GS7HtIFxVpyG",
+        "name": "get_webpage_text_content",
+        "arguments": {
+            "url": "www.informations.com"
+        }
+    },
+    "return": {
+        "id": "call_dx6NRJIZOLS2GS7HtIFxVpyG",
+        "name": "get_webpage_text_content",
+        "content": "$$RETURN$$"
+    }
+}
