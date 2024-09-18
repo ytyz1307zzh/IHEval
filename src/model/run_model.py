@@ -26,7 +26,7 @@ eval_func_map = {
     "secret-password": safety_eval.eval_tensortrust,
     "single-turn": rule_eval.eval_ifeval,
     "multi-turn": rule_eval.eval_ifeval,
-    "mix-nlp-tasks": task_eval.eval_mixed,
+    "get-webpage": task_eval.eval_mixed,
     "slack-user": tool_eval.eval_slack_user,
 }
 
@@ -35,7 +35,7 @@ eval_metric_map = {
     "translation": "ROUGE-L",
     "lang-detect": "Accuracy",
     "secret-password": "Accuracy",
-    "mix-nlp-tasks": "Overall",
+    "get-webpage": "Overall",
     "slack-user": "Accuracy",
 }
 

@@ -221,14 +221,15 @@ def print_report(outputs):
 
   print(f"prompt-level: {prompt_correct / prompt_total:.2%}")
   print(f"instruction-level: {instruction_correct / instruction_total:.2%}")
-  print()
-  for instruction_id in sorted(tier0_total.keys()):
-    accuracy = tier0_correct[instruction_id] / tier0_total[instruction_id]
-    print(f"{instruction_id} {accuracy:.2%}")
-  print()
-  for instruction_id in sorted(tier1_total.keys()):
-    accuracy = tier1_correct[instruction_id] / tier1_total[instruction_id]
-    print(f"{instruction_id} {accuracy:.2%}")
+  # Uncomment to print more detailed scores
+  # print()
+  # for instruction_id in sorted(tier0_total.keys()):
+  #   accuracy = tier0_correct[instruction_id] / tier0_total[instruction_id]
+  #   print(f"{instruction_id} {accuracy:.2%}")
+  # print()
+  # for instruction_id in sorted(tier1_total.keys()):
+  #   accuracy = tier1_correct[instruction_id] / tier1_total[instruction_id]
+  #   print(f"{instruction_id} {accuracy:.2%}")
 
 
 def main(argv):
