@@ -1,13 +1,14 @@
 # export CUDA_VISIBLE_DEVICES="0,1,2,3"
 # Make sure to add OpenAI API key to the environment variable OPENAI_API_KEY
 
-domains=($(find benchmark -mindepth 1 -maxdepth 1 -type d))
-system_tasks=($(find benchmark/${domain} -mindepth 1 -maxdepth 1 -type d))
+domains=($(find benchmark -mindepth 1 -maxdepth 1 -type d | xargs -n 1 basename))
 
 model_list=(gpt-3.5-turbo gpt-4o-2024-08-06 llama3-8b llama3-70b claude3-haiku claude3-sonnet)
 
 for domain in ${domains[@]}; do
-    
+
+    system_tasks=($(find benchmark/${domain} -mindepth 1 -maxdepth 1 -type d | xargs -n 1 basename))
+
     for system_task in ${system_tasks[@]}; do
 
         for model in ${model_list[@]}; do
@@ -46,13 +47,11 @@ for domain in ${domains[@]}; do
             fi
 
             # Find all data directories for the given task
-            folders=($(find benchmark/${domain}/${system_task} -mindepth 2 -maxdepth 2 -type d))
+            folders=($(find benchmark/${domain}/${system_task} -mindepth 2 -maxdepth 2 -type d | awk -F '/' '{print $(NF-1)"/"$NF}'))
 
             for folder in ${folders[@]}; do
-                # Remove the leading "./" from the folder path
-                folder=${folder#./}
 
-                echo "********* ${folder} *********"
+                echo -e "\n********************** ${folder} **********************"
 
                 OUTPUT_DIR=benchmark/${domain}/${system_task}/${folder}/${model_family}/${model}
 
@@ -73,22 +72,35 @@ for domain in ${domains[@]}; do
                     -max_threads 16 \
                     -sleep 5
 
+                echo -e "--------------------- Process Scores ---------------------"
+
                 # For tool use, we may need to calculate the aggregated score of three NLP tasks
-                if [ "$system_task" = "get_webpage" ]; then
-                    if [ "$folder" = "reference" ]; then
-                        python src/task_execution/data/calc_mixed_reference_score.py \
-                            -input benchmark/${domain}/${system_task}/${folder}/${model_family}/${model}/eval_results.json
+                if [ "$system_task" = "get-webpage" ] ; then
+                    if [ "$folder" = "reference/default" ] ; then
+                        python src/task_execution/evaluate/calc_mix_reference_score.py \
+                            -input benchmark/${domain}/${system_task}/${folder}/${model_family}/${model}/eval_results.json \
+                            -record_dir model-scores
                     else
-                        python src/task_execution/data/calc_mixed_score.py \
+                        python src/task_execution/evaluate/calc_mix_task_score.py \
                             -input benchmark/${domain}/${system_task}/${folder}/${model_family}/${model}/eval_results.json
+
+                        python src/model/record_scores.py \
+                            -data benchmark/${domain}/${system_task}/${folder}/${model_family}/${model}/eval_results.json \
+                            -output_dir model-scores
                     fi
-                fi
 
                 # For calculating the reference score of NLP tasks (except for language detection task)
-                if [ "$domain" = "task-execution"] && [ "$folder" = "reference" ] && [ "$system_task" != "lang-detect" ]; then
-                    python src/task_execution/data/calc_reference_score.py \
+                elif [ "$domain" = "task-execution" ] && [ "$folder" = "reference/default" ] && [ "$system_task" != "lang-detect" ]; then
+                    python src/task_execution/evaluate/calc_reference_score.py \
                         -input benchmark/${domain}/${system_task}/${folder}/${model_family}/${model}/eval_results.json \
-                        -task ${system_task}
+                        -task ${system_task} \
+                        -record_dir model-scores
+                
+                # For recording the model scores
+                else
+                    python src/model/record_scores.py \
+                        -data benchmark/${domain}/${system_task}/${folder}/${model_family}/${model}/eval_results.json \
+                        -output_dir model-scores
                 fi
 
             done
