@@ -3,6 +3,7 @@ Calculate the reference score for the translation task
 Reference score: the normal translation performance (translating user instruction + math question)
 """
 
+import os
 import sys
 import json
 import argparse
@@ -10,6 +11,7 @@ from tqdm import tqdm
 
 sys.path.append(".")
 import src.task_execution.evaluate as task_eval
+from statistics import mean
 
 eval_func_map = {
     "verb-extract": task_eval.eval_verb_extract,
@@ -33,6 +35,7 @@ def main():
         "-input", type=str, default="reference/llama/llama3-8b/eval_results.json"
     )
     parser.add_argument("-task", type=str, choices=eval_func_map.keys(), required=True)
+    parser.add_argument("-record_dir", type=str, default="model-scores/")
     args = parser.parse_args()
 
     data = json.load(open(args.input, "r", encoding="utf-8"))
@@ -125,23 +128,53 @@ def main():
         data_loose_scores.append(data_loose_score)
 
     print(
-        f"Strong instruction strict {eval_metric_map[args.task]} score: {sum(strong_strict_scores) / len(strong_strict_scores):.2%}"
+        f"Strong user instruction strict {eval_metric_map[args.task]} score: {sum(strong_strict_scores) / len(strong_strict_scores):.2%}"
     )
     print(
-        f"Strong instruction loose {eval_metric_map[args.task]} score: {sum(strong_loose_scores) / len(strong_loose_scores):.2%}"
+        f"Strong user nstruction loose {eval_metric_map[args.task]} score: {sum(strong_loose_scores) / len(strong_loose_scores):.2%}"
     )
     print(
-        f"Weak instruction strict {eval_metric_map[args.task]} score: {sum(weak_strict_scores) / len(weak_strict_scores):.2%}"
+        f"Weak user instruction strict {eval_metric_map[args.task]} score: {sum(weak_strict_scores) / len(weak_strict_scores):.2%}"
     )
     print(
-        f"Weak instruction loose {eval_metric_map[args.task]} score: {sum(weak_loose_scores) / len(weak_loose_scores):.2%}"
+        f"Weak user instruction loose {eval_metric_map[args.task]} score: {sum(weak_loose_scores) / len(weak_loose_scores):.2%}"
     )
     print(
-        f"Data strict {eval_metric_map[args.task]} score: {sum(data_strict_scores) / len(data_strict_scores):.2%}"
+        f"No user instruction strict {eval_metric_map[args.task]} score: {sum(data_strict_scores) / len(data_strict_scores):.2%}"
     )
     print(
-        f"Data loose {eval_metric_map[args.task]} score: {sum(data_loose_scores) / len(data_loose_scores):.2%}"
+        f"No user instruction loose {eval_metric_map[args.task]} score: {sum(data_loose_scores) / len(data_loose_scores):.2%}"
     )
+
+    # Record the model scores
+    domain, task, instruction_type, prompt_setting, model_family, model, data_filename = args.input.split('/')[-7:]
+    score_filepath = os.path.join(args.record_dir, f"{model}.json")
+
+    all_scores = {}
+    if os.path.exists(score_filepath):
+        all_scores = json.load(open(score_filepath, 'r', encoding='utf-8'))
+
+    score_dict = {
+        "strong_user_instruction_strict": round(sum(strong_strict_scores) / len(strong_strict_scores), 4),
+        "strong_user_instruction_loose": round(sum(strong_loose_scores) / len(strong_loose_scores), 4),
+        "weak_user_instruction_strict": round(sum(weak_strict_scores) / len(weak_strict_scores), 4),
+        "weak_user_instruction_loose": round(sum(weak_loose_scores) / len(weak_loose_scores), 4),
+        "no_user_instruction_strict": round(sum(data_strict_scores) / len(data_strict_scores), 4),
+        "no_user_instruction_loose": round(sum(data_loose_scores) / len(data_loose_scores), 4),
+    }
+    score_dict['average'] = round(mean(score_dict.values()), 4)
+
+    if domain not in all_scores:
+        all_scores[domain] = {}
+    if task not in all_scores[domain]:
+        all_scores[domain][task] = {}
+    if instruction_type not in all_scores[domain][task]:
+        all_scores[domain][task][instruction_type] = {}
+        
+    all_scores[domain][task][instruction_type][prompt_setting] = score_dict
+
+    json.dump(all_scores, open(score_filepath, 'w', encoding='utf-8'), indent=4, ensure_ascii=False)
+    print(f'Saved scores to {score_filepath}')
 
 
 if __name__ == "__main__":

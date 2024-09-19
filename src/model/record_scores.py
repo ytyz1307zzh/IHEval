@@ -5,6 +5,7 @@ Record all scores of the same model into a single JSON file.
 import os
 import json
 import argparse
+from statistics import mean
 
 
 def record_rule_following_single_file(data):
@@ -20,8 +21,8 @@ def record_rule_following_single_file(data):
         if all(follow_instruction_list):
             prompt_correct += 1
 
-    instruction_total += len(instruction_id_list)
-    instruction_correct += sum(follow_instruction_list)
+        instruction_total += len(instruction_id_list)
+        instruction_correct += sum(follow_instruction_list)
 
     prompt_accuracy = prompt_correct / prompt_total
     instruction_accuracy = instruction_correct / instruction_total
@@ -42,12 +43,14 @@ def record_rule_following(filepath):
     print(f'Loaded {len(loose_data)} data instances from {loose_filepath}')
     loose_prompt_score, loose_instruction_score = record_rule_following_single_file(loose_data)
 
-    return {
-        "prompt_strict": strict_prompt_score,
-        "instruction_strict": strict_instruction_score,
-        "prompt_loose": loose_prompt_score,
-        "instruction_loose": loose_instruction_score
+    score_dict = {
+        "prompt_strict": round(strict_prompt_score, 4), 
+        "instruction_strict": round(strict_instruction_score, 4), 
+        "prompt_loose": round(loose_prompt_score, 4), 
+        "instruction_loose": round(loose_instruction_score, 4), 
     }
+    score_dict['average'] = round(mean(score_dict.values()), 4)
+    return score_dict
 
 
 def record_regular_task(data):
@@ -61,9 +64,11 @@ def record_regular_task(data):
 
     score_dict = {}
     if len(strict_scores) > 0:
-        score_dict['strict_score'] = sum(strict_scores) / len(strict_scores)
+        score_dict['strict_score'] = round(sum(strict_scores) / len(strict_scores), 4)
     if len(loose_scores) > 0:
-        score_dict['loose_score'] = sum(loose_scores) / len(loose_scores)
+        score_dict['loose_score'] = round(sum(loose_scores) / len(loose_scores), 4)
+
+    score_dict['average'] = round(mean(score_dict.values()), 4)
 
     return score_dict
     
@@ -71,32 +76,35 @@ def record_regular_task(data):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-data', type=str, required=True, help='Path to eval_results.json')
-    parser.add_argument('-domain', type=str, help='Domain of the task')
-    parser.add_argument('-task', type=str, help='task name')
-    parser.add_argument('-prompt_setting', type=str, help='prompt setting (strong/weak prompts)')
-    parser.add_argument('-instruction_type', type=str, help='conflict/aligned/reference')
-    parser.add_argument('-model', type=str, help='Model name')
     parser.add_argument('-output_dir', type=str, default='record/', help='Directory to save the output')
     args = parser.parse_args()
 
-    output_path = os.path.join(args.output_dir, f'{args.model}.json')
+    domain, task, instruction_type, prompt_setting, model_family, model, data_filename = args.data.split('/')[-7:]
+    output_path = os.path.join(args.output_dir, f'{model}.json')
 
-    all_scores = []
+    all_scores = {}
     if os.path.exists(output_path):
         all_scores = json.load(open(output_path, 'r', encoding='utf-8'))
     
-    if args.domain == 'rule-following':
-        score_dict = record_rule_following(data)
+    if domain == 'rule-following':
+        score_dict = record_rule_following(args.data)
 
     else:
         data = json.load(open(args.data, 'r', encoding='utf-8'))
         print(f'Loaded {len(data)} data instances from {args.data}')
         score_dict = record_regular_task(data)
 
-    all_scores[args.domain][args.task][args.instruction_type][args.prompt_setting] = score_dict
+    if domain not in all_scores:
+        all_scores[domain] = {}
+    if task not in all_scores[domain]:
+        all_scores[domain][task] = {}
+    if instruction_type not in all_scores[domain][task]:
+        all_scores[domain][task][instruction_type] = {}
+
+    all_scores[domain][task][instruction_type][prompt_setting] = score_dict
 
     json.dump(all_scores, open(output_path, 'w', encoding='utf-8'), indent=4, ensure_ascii=False)
-    print('*' * 30 + '\n' + f'Saved scores to {output_path}')
+    print(f'Saved scores to {output_path}')
 
 
 if __name__ == '__main__':

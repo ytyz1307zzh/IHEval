@@ -12,7 +12,6 @@ def save_list_as_jsonl(path: str, data):
         for instance in data:
             fout.write(json.dumps(instance))
             fout.write("\n")
-    print(f"Saved {len(data)} data to {path}")
 
 
 def eval_ifeval(args, id2answer: Dict, responses: List, extract_output: callable):
@@ -30,13 +29,13 @@ def eval_ifeval(args, id2answer: Dict, responses: List, extract_output: callable
     save_list_as_jsonl(response_save_path, results)
 
     evaluation_command = (
-        f"python src/ifeval/evaluate/evaluation_main.py"
+        f"python src/rule_following/evaluate/evaluation_main.py"
         f" --input_data={args.input}"
         f" --input_response_data={response_save_path}"
         f" --output_dir={args.eval_output_dir}"
     )
 
-    print("*" * 30)
+    print("-" * 30)
     print(evaluation_command)
     os.system(evaluation_command)
     

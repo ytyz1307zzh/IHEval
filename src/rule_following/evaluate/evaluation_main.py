@@ -245,24 +245,22 @@ def main(argv):
       (test_instruction_following_strict, "eval_results_strict"),
       (test_instruction_following_loose, "eval_results_loose"),
   ]:
-    logging.info("Generating %s...", output_file_name)
     outputs = []
     for inp in inputs:
       outputs.append(func(inp, prompt_to_response))
     follow_all_instructions = [o.follow_all_instructions for o in outputs]
     accuracy = sum(follow_all_instructions) / len(outputs)
-    logging.info("Accuracy: %f", accuracy)
 
+    # Prints instruction following accuracy report.
+    print("=" * 30 + output_file_name + "=" * 30)
+    print(f"{output_file_name} Accuracy Scores:")
+    print_report(outputs)
+
+    # Save the scores to file
     output_file_name = os.path.join(
         _OUTPUT_DIR.value, output_file_name + ".json"
     )
     write_outputs(output_file_name, outputs)
-    logging.info("Generated: %s", output_file_name)
-
-    # Prints instruction following accuracy report.
-    print("=" * 64)
-    print(f"{output_file_name} Accuracy Scores:")
-    print_report(outputs)
 
 
 if __name__ == "__main__":

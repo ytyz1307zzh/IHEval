@@ -23,7 +23,8 @@ eval_func_map = {
     "verb-extract": task_eval.eval_verb_extract,
     "translation": task_eval.eval_translation,
     "lang-detect": task_eval.eval_lang_detect,
-    "secret-password": safety_eval.eval_tensortrust,
+    "user-prompt-hijack": safety_eval.eval_tensortrust,
+    "system-prompt-extract": safety_eval.eval_tensortrust,
     "single-turn": rule_eval.eval_ifeval,
     "multi-turn": rule_eval.eval_ifeval,
     "get-webpage": task_eval.eval_mixed,
@@ -34,7 +35,8 @@ eval_metric_map = {
     "verb-extract": "F1",
     "translation": "ROUGE-L",
     "lang-detect": "Accuracy",
-    "secret-password": "Accuracy",
+    "user-prompt-hijack": "Accuracy",
+    "system-prompt-extract": "Accuracy",
     "get-webpage": "Overall",
     "slack-user": "Accuracy",
 }
@@ -179,7 +181,7 @@ def main():
         )
 
     # Run inference (if inference was done before, the script will skip running the model)
-    print("*" * 30)
+    print("-" * 30)
     print(inference_command)
     os.system(inference_command)
 
