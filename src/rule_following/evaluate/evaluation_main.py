@@ -11,6 +11,10 @@ from absl import logging
 
 import instructions_registry
 
+import colorama
+from termcolor import colored
+colorama.init()
+
 
 _INPUT_DATA = flags.DEFINE_string(
     "input_data", None, "path to input data", required=True
@@ -252,7 +256,7 @@ def main(argv):
     accuracy = sum(follow_all_instructions) / len(outputs)
 
     # Prints instruction following accuracy report.
-    print("=" * 30 + output_file_name + "=" * 30)
+    print(colored("=" * 30 + output_file_name + "=" * 30, "green"))
     print(f"{output_file_name} Accuracy Scores:")
     print_report(outputs)
 

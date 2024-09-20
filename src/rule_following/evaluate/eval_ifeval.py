@@ -5,6 +5,10 @@ from typing import Dict, List
 import json
 import os
 
+import colorama
+from termcolor import colored
+colorama.init()
+
 
 def save_list_as_jsonl(path: str, data):
     assert path.endswith(".jsonl")
@@ -35,7 +39,7 @@ def eval_ifeval(args, id2answer: Dict, responses: List, extract_output: callable
         f" --output_dir={args.eval_output_dir}"
     )
 
-    print("-" * 30)
+    print(colored("-" * 20 + "Evaluation" + "-" * 20, "green"))
     print(evaluation_command)
     os.system(evaluation_command)
     

@@ -19,6 +19,10 @@ import src.rule_following.evaluate as rule_eval
 import src.tool_use.evaluate as tool_eval
 from tqdm import tqdm
 
+import colorama
+from termcolor import colored
+colorama.init()
+
 eval_func_map = {
     "verb-extract": task_eval.eval_verb_extract,
     "translation": task_eval.eval_translation,
@@ -181,7 +185,7 @@ def main():
         )
 
     # Run inference (if inference was done before, the script will skip running the model)
-    print("-" * 30)
+    print(colored("-" * 20 + "Inference" + "-" * 20, "green"))
     print(inference_command)
     os.system(inference_command)
 
