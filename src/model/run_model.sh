@@ -21,6 +21,18 @@ for domain in ${domains[@]}; do
                 model_family=llama
                 model_path=meta.llama3-70b-instruct-v1:0
                 script_type=api
+            elif [ "$model" = "llama3.1-8b" ]; then
+                model_family=llama
+                model_path=meta.llama3-1-8b-instruct-v1:0
+                script_type=api
+            elif [ "$model" = "llama3.1-70b" ]; then
+                model_family=llama
+                model_path=meta.llama3-1-70b-instruct-v1:0
+                script_type=api
+            elif [ "$model" = "llama3.1-405b" ]; then
+                model_family=llama
+                model_path=meta.llama3-1-405b-instruct-v1:0
+                script_type=api
             elif [ "$model" = "qwen2-7b" ]; then
                 model_family=qwen
                 model_path=Qwen/Qwen2-7B-Instruct
@@ -51,7 +63,7 @@ for domain in ${domains[@]}; do
 
             for folder in ${folders[@]}; do
 
-                echo -e "\n********************** ${folder} **********************"
+                echo -e "\n\e[31m********************** ${domain}/${system_task}/${folder} **********************\e[0m"
 
                 OUTPUT_DIR=benchmark/${domain}/${system_task}/${folder}/${model_family}/${model}
 
@@ -72,7 +84,7 @@ for domain in ${domains[@]}; do
                     -max_threads 16 \
                     -sleep 5
 
-                echo -e "--------------------- Process Scores ---------------------"
+                echo -e "\e[32m--------------------- Process Scores ---------------------\e[0m"
 
                 # For tool use, we may need to calculate the aggregated score of three NLP tasks
                 if [ "$system_task" = "get-webpage" ] ; then
@@ -104,6 +116,11 @@ for domain in ${domains[@]}; do
                 fi
 
             done
+
+            # Aggregate the scores of all the tasks for a single model
+            python src/model/average_final_score.py \
+                -record model-scores/${model}.json \
+                -output model-scores/overall_${model}.json
 
         done
     

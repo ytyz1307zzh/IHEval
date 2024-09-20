@@ -17,7 +17,45 @@ from transformers import AutoTokenizer
 # Mapping of the bedrock model name to HF model name
 LLAMA_BEDROCK2HF_MAP = {
     "meta.llama3-8b-instruct-v1:0": "meta-llama/Meta-Llama-3-8B-Instruct",
-    "meta.llama3-70b-instruct-v1:0": "meta-llama/Meta-Llama-3-70B-Instruct"
+    "meta.llama3-70b-instruct-v1:0": "meta-llama/Meta-Llama-3-70B-Instruct",
+    "meta.llama3-1-8b-instruct-v1:0": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+    "meta.llama3-1-70b-instruct-v1:0": "meta-llama/Meta-Llama-3.1-70B-Instruct",
+}
+
+LLAMA_BEDROCK2HF_MAP_FOR_TOOL = {
+    "meta.llama3-8b-instruct-v1:0": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+    "meta.llama3-70b-instruct-v1:0": "meta-llama/Meta-Llama-3.1-70B-Instruct",
+    "meta.llama3-1-8b-instruct-v1:0": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+    "meta.llama3-1-70b-instruct-v1:0": "meta-llama/Meta-Llama-3.1-70B-Instruct",
+}
+
+# Function descriptions for open-source models
+def get_users_in_channel(channel: str) -> str:
+    """
+    Gets the user list of the given Slack channel.
+
+    Args:
+        channel: The Slack channel name.
+    Returns:
+        A string indicating the user names in the channel.
+    """
+    return None
+
+
+def get_webpage_text_content(url: str) -> str:
+    """
+    Gets the content of the webpage at a given URL, and returns the text content on the webpage.
+
+    Args:
+        url: The URL of the webpage.
+    Returns:
+        The text content of the webpage.
+    """
+    return None
+
+TOOL2FUNCTION_MAP = {
+    "get_users_in_channel": get_users_in_channel,
+    "get_webpage_text_content": get_webpage_text_content
 }
 
 
@@ -116,6 +154,26 @@ def tool_call_claude(tool: Dict):
     return definition, tool_call, tool_return
 
 
+def tool_call_llama(tool: Dict):
+
+    tool_name = tool['definition']['name']
+    tool_definition = TOOL2FUNCTION_MAP[tool_name]  # In HF, the tool definition is a python function
+
+    tool_call = {
+        "name": tool['call']['name'],
+        "arguments": tool['call']['arguments']
+    }
+    tool_call = {"role": "assistant", "tool_calls": [{"type": "function", "function": tool_call}]}
+
+    tool_return = {
+        "role": "tool",
+        "name": tool['return']['name'],
+        "content": tool['return']['content']
+    }
+
+    return tool_definition, tool_call, tool_return
+
+
 
 def convert_jsonl_to_json(file_path) -> None:
     """Convert a jsonl file to a json file."""
@@ -143,13 +201,19 @@ def save_list_as_jsonl(path: str, data):
 
 
 def call_llama(l_data, tokenizer):
-    bedrock = boto3.client("bedrock-runtime", region_name="us-east-1")
+    bedrock = boto3.client("bedrock-runtime", region_name="us-west-2")
     messages = deepcopy(l_data["messages"])
 
     if "system" in l_data.keys() and l_data["system"] is not None:
         messages.insert(0, {"role": "system", "content": l_data["system"]})
 
-    chat_prompt = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+    if "tool" in l_data.keys():
+        tool_definition, tool_call, tool_return = tool_call_llama(l_data["tool"])
+        messages.extend([tool_call, tool_return])
+
+        chat_prompt = tokenizer.apply_chat_template(messages, tokenize=False, tools=[tool_definition], add_generation_prompt=True)
+    else:
+        chat_prompt = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
 
     body = json.dumps({
         "prompt": chat_prompt,
@@ -186,7 +250,7 @@ def call_llama(l_data, tokenizer):
 
 
 def call_claude(l_data):
-    bedrock = boto3.client("bedrock-runtime", region_name="us-east-1")
+    bedrock = boto3.client("bedrock-runtime", region_name="us-west-2")
 
     messages = l_data["messages"]
     if "tool" in l_data.keys():
@@ -275,6 +339,21 @@ def call_openai(l_data):
             break
 
         except Exception as e:
+
+            # For safety tasks, sometimes openai rejects the request due to repetitive patterns in the attack
+            # we should identify such as a successful defense by outputting an empty string (which would be considered as a success)
+            if isinstance(e, openai.BadRequestError) and "repetitive patterns in your prompt" in e.body['message']:
+                append_to_jsonl(
+                    {
+                        "id": l_data["id"],
+                        "input": messages,
+                        "output": "",
+                    },
+                    args.output,
+                )
+                p_bar.update(1)
+                break
+
             retries += 1
             print(
                 f"Error on call attempt {retries}: {e}"
@@ -339,10 +418,16 @@ if __name__ == "__main__":
         ) as executor:
             if "anthropic" in args.model:
                 executor.map(call_claude, dataset)
+
             elif "gpt" in args.model:
                 executor.map(call_openai, dataset)
+
             elif "llama" in args.model:
-                tokenizer = AutoTokenizer.from_pretrained(LLAMA_BEDROCK2HF_MAP[args.model])
+                if 'tool' in requests[0].keys():
+                    tokenizer = AutoTokenizer.from_pretrained(LLAMA_BEDROCK2HF_MAP_FOR_TOOL[args.model])
+                else:
+                    tokenizer = AutoTokenizer.from_pretrained(LLAMA_BEDROCK2HF_MAP[args.model])
+
                 partial_call_llama = partial(call_llama, tokenizer=tokenizer)
                 executor.map(partial_call_llama, dataset)
 
