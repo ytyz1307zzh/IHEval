@@ -11,6 +11,7 @@ from copy import deepcopy
 from tqdm import tqdm
 import concurrent.futures
 from openai import OpenAI
+from mistralai import Mistral
 from functools import partial
 from transformers import AutoTokenizer
 
@@ -174,6 +175,43 @@ def tool_call_llama(tool: Dict):
     return tool_definition, tool_call, tool_return
 
 
+def tool_call_mistral(tool: Dict):
+    raw_definition = tool["definition"]
+    raw_tool_call = tool["call"]
+    raw_tool_return = tool["return"]
+    
+    tool_definition = [{
+        'type': 'function',
+        'function': {
+            'name': raw_definition['name'],
+            'description': raw_definition['description'],
+            "parameters": {
+                "type": "object",
+                "properties": raw_definition['parameters'],
+                "required": list(raw_definition['parameters'].keys()),
+            }
+        }
+    }]
+
+    tool_call = {
+        "name": raw_tool_call['name'],
+        "arguments": raw_tool_call['arguments']
+    }
+    tool_call = {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [{"id": "D681PevKs", "type": "function", "function": tool_call}]
+    }
+
+    tool_return = {
+        "role": "tool",
+        "name": raw_tool_return["name"],
+        "tool_call_id": "D681PevKs",
+        "content": raw_tool_return['content']
+    }
+
+    return tool_definition, tool_call, tool_return
+
 
 def convert_jsonl_to_json(file_path) -> None:
     """Convert a jsonl file to a json file."""
@@ -247,6 +285,52 @@ def call_llama(l_data, tokenizer):
                 print(f"Retry exceed the max_retries {retries} times.")
                 break
             time.sleep(args.sleep)
+
+
+def call_mistral(l_data):
+    api_key = os.environ["MISTRAL_API_KEY"]
+    client = Mistral(api_key=api_key)
+
+    messages = deepcopy(l_data["messages"])
+
+    if "system" in l_data.keys() and l_data["system"] is not None:
+        messages.insert(0, {"role": "system", "content": l_data["system"]})
+
+    if "tool" in l_data.keys():
+        tool_definition, tool_call, tool_return = tool_call_mistral(l_data["tool"])
+        messages.extend([tool_call, tool_return])
+
+    retries = 0
+    while retries < args.max_retries:
+        try:
+            response = client.chat.complete(
+                model = args.model,
+                messages = messages,
+                tools=[tool_definition] if "tool" in l_data.keys() else None,
+            )
+            response_body = response.choices[0].message.content
+
+            append_to_jsonl(
+                {
+                    "id": l_data["id"],
+                    "input": messages,
+                    "output": response_body,
+                },
+                args.output,
+            )
+            p_bar.update(1)
+            break
+
+        except Exception as e:
+            retries += 1
+            print(
+                f"Error on call attempt {retries}: {e}"
+            )  # If we've reached the maximum number of retries, record an error message (or handle as desired)
+            if retries == args.max_retries:
+                print(f"Retry exceed the max_retries {retries} times.")
+                break
+            time.sleep(args.sleep)
+
 
 
 def call_claude(l_data):
@@ -430,6 +514,9 @@ if __name__ == "__main__":
 
                 partial_call_llama = partial(call_llama, tokenizer=tokenizer)
                 executor.map(partial_call_llama, dataset)
+
+            elif "mistral" in args.model:
+                executor.map(call_mistral, dataset)
 
     tend = datetime.datetime.now()
     ttime = tend - tstart
