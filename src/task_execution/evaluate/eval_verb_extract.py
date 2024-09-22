@@ -36,10 +36,14 @@ def eval_verb_extract(answer, prediction, loose=False):
 
         all_prediction_scores = []
         for p in all_predictions:
+            all_prediction_scores.append(word_f1_no_punc(answer, p))
+
             # Claude may generate an extra "verbs:" prefix
             if ":" in p:
                 p = p.split(":")[1]
+
             all_prediction_scores.append(word_f1_no_punc(answer, p))
+            
         return max(all_prediction_scores)
 
     else:
