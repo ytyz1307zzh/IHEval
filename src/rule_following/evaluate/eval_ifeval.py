@@ -22,10 +22,13 @@ def eval_ifeval(args, id2answer: Dict, responses: List, extract_output: callable
     """
     Format the data according to the format required by IFEval's official evaluation script, then call their official evaluation script
     """
+    input_data = json.load(open(args.input, "r", encoding="utf-8"))
+    id2instruction = {example["id"]: example["instruction"] for example in input_data}
+
     results = []
     for example in responses:
-        assert example['input'][-1]['role'] == 'user'
-        instruction = example['input'][-1]['content']  # the last turn is the instruction
+        id_ = example["id"]
+        instruction = id2instruction[id_]
         prediction = extract_output(args, example)
         results.append({"prompt": instruction, "response": prediction})
 
