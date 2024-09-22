@@ -3,7 +3,7 @@
 
 domains=($(find benchmark -mindepth 1 -maxdepth 1 -type d | xargs -n 1 basename))
 
-model_list=(gpt-3.5-turbo gpt-4o-2024-08-06 llama3-8b llama3-70b claude3-haiku claude3-sonnet)
+model_list=(mistral-7b)
 
 for domain in ${domains[@]}; do
 
@@ -33,14 +33,22 @@ for domain in ${domains[@]}; do
                 model_family=llama
                 model_path=meta.llama3-1-405b-instruct-v1:0
                 script_type=api
+            elif [ "$model" = "mistral-7b" ]; then
+                model_family=mistral
+                model_path=mistral:7b-instruct-v0.3-fp16
+                script_type=ollama
+            elif [ "$model" = "mistral-large-2" ]; then
+                model_family=mistral
+                model_path=mistral.mistral-large-2407-v1:0
+                script_type=api
             elif [ "$model" = "qwen2-7b" ]; then
                 model_family=qwen
-                model_path=Qwen/Qwen2-7B-Instruct
-                script_type=lmdeploy
+                model_path=qwen2:7b-instruct-fp16
+                script_type=ollama
             elif [ "$model" = "qwen2-72b" ]; then
                 model_family=qwen
-                model_path=Qwen/Qwen2-72B-Instruct
-                script_type=lmdeploy
+                model_path=qwen2:72b-instruct-fp16
+                script_type=ollama
             elif [ "$model" = "claude3-sonnet" ]; then
                 model_family=claude
                 model_path=anthropic.claude-3-sonnet-20240229-v1:0
@@ -120,7 +128,7 @@ for domain in ${domains[@]}; do
             # Aggregate the scores of all the tasks for a single model
             python src/model/average_final_score.py \
                 -record model-scores/${model}.json \
-                -output model-scores/overall_${model}.json
+                -output model-scores/overall/overall_${model}.json
 
         done
     

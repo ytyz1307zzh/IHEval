@@ -11,7 +11,6 @@ from copy import deepcopy
 from tqdm import tqdm
 import concurrent.futures
 from openai import OpenAI
-from mistralai import Mistral
 from functools import partial
 from transformers import AutoTokenizer
 
@@ -180,7 +179,7 @@ def tool_call_mistral(tool: Dict):
     raw_tool_call = tool["call"]
     raw_tool_return = tool["return"]
     
-    tool_definition = [{
+    tool_definition = {
         'type': 'function',
         'function': {
             'name': raw_definition['name'],
@@ -191,21 +190,20 @@ def tool_call_mistral(tool: Dict):
                 "required": list(raw_definition['parameters'].keys()),
             }
         }
-    }]
+    }
 
     tool_call = {
         "name": raw_tool_call['name'],
-        "arguments": raw_tool_call['arguments']
+        "arguments": json.dumps(raw_tool_call['arguments'])
     }
     tool_call = {
         "role": "assistant",
         "content": "",
-        "tool_calls": [{"id": "D681PevKs", "type": "function", "function": tool_call}]
+        "tool_calls": [{"id": "D681PevKs", "function": tool_call}]
     }
 
     tool_return = {
         "role": "tool",
-        "name": raw_tool_return["name"],
         "tool_call_id": "D681PevKs",
         "content": raw_tool_return['content']
     }
@@ -287,9 +285,8 @@ def call_llama(l_data, tokenizer):
             time.sleep(args.sleep)
 
 
-def call_mistral(l_data):
-    api_key = os.environ["MISTRAL_API_KEY"]
-    client = Mistral(api_key=api_key)
+def call_mistral_large(l_data):
+    bedrock = boto3.client("bedrock-runtime", region_name="us-west-2")
 
     messages = deepcopy(l_data["messages"])
 
@@ -300,16 +297,21 @@ def call_mistral(l_data):
         tool_definition, tool_call, tool_return = tool_call_mistral(l_data["tool"])
         messages.extend([tool_call, tool_return])
 
+    body = {
+        "messages": messages,
+        "max_tokens": args.max_new_tokens,
+        "temperature": args.temperature,
+        "top_p": args.top_p,
+    }
+
+    if "tool" in l_data.keys():
+        body["tools"] = [tool_definition]
+
     retries = 0
     while retries < args.max_retries:
         try:
-            response = client.chat.complete(
-                model = args.model,
-                messages = messages,
-                tools=[tool_definition] if "tool" in l_data.keys() else None,
-            )
-            response_body = response.choices[0].message.content
-
+            response = bedrock.invoke_model(body=json.dumps(body), modelId=args.model)
+            response_body = json.loads(response.get("body").read())
             append_to_jsonl(
                 {
                     "id": l_data["id"],
@@ -515,8 +517,8 @@ if __name__ == "__main__":
                 partial_call_llama = partial(call_llama, tokenizer=tokenizer)
                 executor.map(partial_call_llama, dataset)
 
-            elif "mistral" in args.model:
-                executor.map(call_mistral, dataset)
+            elif "mistral-large" in args.model:
+                executor.map(call_mistral_large, dataset)
 
     tend = datetime.datetime.now()
     ttime = tend - tstart

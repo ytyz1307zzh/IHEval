@@ -62,6 +62,9 @@ def extract_output(args, example):
                 return ""
         elif "llama" in args.model:
             return example["output"]['generation'].strip()
+        elif "mistral-large" in args.model:
+            return example["output"]["choices"][0]['message']['content'].strip()
+
     else:
         return example["output"].strip()
 
@@ -96,7 +99,7 @@ def main():
     parser.add_argument("-temperature", type=float, default=0.0)
     parser.add_argument("-precision", type=str, default="auto")
     parser.add_argument(
-        "-backend", type=str, choices=["vllm", "hf", "lmdeploy", "api"], required=True
+        "-backend", type=str, choices=["vllm", "hf", "lmdeploy", "api", "ollama"], required=True
     )
     parser.add_argument("-task", type=str, choices=eval_func_map.keys(), required=True)
 
@@ -159,6 +162,8 @@ def main():
         inference_script = "src/utils/run_hf_model.py"
     elif args.backend == "lmdeploy":
         inference_script = "src/utils/run_lmdeploy_model.py"
+    elif args.backend == "ollama":
+        inference_script = "src/utils/run_ollama_model.py"
     # "api": claude or gpt models
     elif args.backend == "api":
         inference_script = "src/utils/call_api.py"
@@ -182,6 +187,10 @@ def main():
             f" -max_retries {args.max_retries}"
             f" -max_threads {args.max_threads}"
             f" -sleep {args.sleep}"
+        )
+    elif args.backend == "ollama":
+        inference_command += (
+            f" -max_threads {args.max_threads}"
         )
 
     # Run inference (if inference was done before, the script will skip running the model)
