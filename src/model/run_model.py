@@ -131,7 +131,7 @@ def main():
 
         request_example = {"id": id_}
 
-        if "system" in example:
+        if "system" in example and example['system'] is not None:
             if args.backend == "api":
                 request_example["system"] = example["system"]
             else:
