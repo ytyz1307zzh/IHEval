@@ -31,6 +31,10 @@ print(f"Loaded {len(data)} examples from {args.record}")
 results = {}
 for domain in data.keys():
 
+    # For llama-3, skip the tool-use category because officially it does not support tool callling
+    if (args.record.endswith("llama3-8b.json") or args.record.endswith("llama3-70b.json")) and domain == 'tool-use':
+        continue
+
     for task, task_score_dict in data[domain].items():
         task_ref_score = aggregate_task_score(task_score_dict['reference'])
         task_align_score = aggregate_task_score(task_score_dict['aligned'])
@@ -67,3 +71,7 @@ print(colored(f"Agg. Aligned: {results['overall']['aligned']:.1%}", "green"), en
 print(colored(f"Agg. Conflict: {results['overall']['conflict']:.1%}", "green"))
 print(colored(f"Diff. Aligned: {results['overall']['aligned'] - results['overall']['reference']:.1%}", "yellow"), end=", ")
 print(colored(f"Diff. Conflict: {results['overall']['conflict'] - results['overall']['reference']:.1%}", "yellow"))
+
+# Average of absolute difference
+print(colored(f"Absolute Diff. Aligned: {mean([abs(results[task]['aligned'] - results[task]['reference']) for task in results.keys() if task != 'overall']):.1%}", "yellow"))
+print(colored(f"Absolute Diff. Conflict: {mean([abs(results[task]['conflict'] - results[task]['reference']) for task in results.keys() if task != 'overall']):.1%}", "yellow"))
