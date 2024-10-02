@@ -8068,7 +8068,7 @@
     {
         "id": 3324,
         "system": "Your output must contain two versions of the answer, separated by 6 asterisk symbols (******). Each version must have 7 sections, with the beginning of each section marked with Day X.",
-        "instruction": "Write two versions of itinerary for a 7 day trip to Hawaii, designed for college students.\n\nYour response must contain two versions of the itinerary, separated by 6 pound signs (######). Each version is a single paragraph.",
+        "instruction": "Write an itinerary for a 7 day trip to Hawaii, designed for college students.\n\nYour response must contain two versions of the itinerary, separated by 6 pound signs (######). Each version is a single paragraph.",
         "original_prompt": "Write two versions of itinerary for a 7 day trip to Hawaii, designed for college students. Separate the two versions with 6 asterisk symbols (******).  Each version must have 7 sections. Mark the beginning of each section with Day X.",
         "answer": {
             "instruction_id_list": [
