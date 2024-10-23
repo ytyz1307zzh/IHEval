@@ -55,15 +55,20 @@ results['overall'] = {
 json.dump(results, open(args.output, 'w', encoding='utf8'), indent=4, ensure_ascii=False)
 print(f"Saved Overall Results to {args.output}")
 
+task_order = ["rule-following_single-turn", "rule-following_multi-turn", "task-execution_verb-extract", "task-execution_translation", "task-execution_lang-detect", "safety_user-prompt-hijack", "safety_system-prompt-extract",
+"tool-use_get-webpage", "tool-use_slack-user"]
+
 print()
-for task, task_scores in results.items():
-    if task == 'overall':
+for task in task_order:
+    try:
+        task_scores = results[task]
+        print(colored(f"Task: {task}", "red"))
+        print(colored(f"Reference: {task_scores['reference']:.1%}", "green"), end=", ")
+        print(colored(f"Aligned: {task_scores['aligned']:.1%}", "green"), end=", ")
+        print(colored(f"Conflict: {task_scores['conflict']:.1%}", "green"))
+        print()
+    except KeyError:
         continue
-    print(colored(f"Task: {task}", "red"))
-    print(colored(f"Reference: {task_scores['reference']:.1%}", "green"), end=", ")
-    print(colored(f"Aligned: {task_scores['aligned']:.1%}", "green"), end=", ")
-    print(colored(f"Conflict: {task_scores['conflict']:.1%}", "green"))
-    print()
 
 print(colored("Overall", "red"))
 print(colored(f"Agg. Reference: {results['overall']['reference']:.1%}", "green"), end=", ")
