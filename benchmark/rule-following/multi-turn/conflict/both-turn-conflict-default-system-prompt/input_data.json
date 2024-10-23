@@ -11325,10 +11325,10 @@
         "id": 3743,
         "system": "Your response must contain at least 3 placeholders represented by square brackets such as [date].",
         "conversation_history": [
-            "I need a joke involving Zoe and bubbles.\n\nYour response must contain exactly 2 placeholders represented by square brackets such as [date].",
+            "I need a joke involving Zoe and bubbles.\n\nYour response must contain exactly 2 placeholders represented by braces such as {date}.",
             "Here's a joke involving Zoe and bubbles, with two placeholders represented by square brackets:\n\nZoe was blowing bubbles in the park when a [animal] wandered over and popped every single one of them. Zoe exclaimed, \"Oh no! Now I have to start all over on [day]!\""
         ],
-        "instruction": "Re-write this story to make a sad ending instead of a funny joke.\n\nYour response must contain exactly 2 placeholders represented by square brackets such as [date].",
+        "instruction": "Re-write Zoe’s story about bubbles to make a sad ending instead of a funny joke.\n\nYour response must contain exactly 2 placeholders represented by square brackets such as [date].",
         "answer": {
             "instruction_id_list": [
                 "detectable_content:number_placeholders"

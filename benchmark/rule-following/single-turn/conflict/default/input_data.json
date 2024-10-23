@@ -9737,7 +9737,7 @@
     {
         "id": 3743,
         "system": "Your response must contain at least 3 placeholders represented by square brackets such as [date].",
-        "instruction": "I need a joke involving Zoe and bubbles.\n\nYour response must contain exactly 2 placeholders represented by square brackets such as [date].",
+        "instruction": "I need a joke involving Zoe and bubbles.\n\nYour response must contain exactly 2 placeholders represented by braces such as {date}.",
         "original_prompt": "I need a joke involving Zoe and bubbles that contains at least 3 placeholders represented by square brackets such as [date].",
         "answer": {
             "instruction_id_list": [
