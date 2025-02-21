@@ -99,7 +99,7 @@ def main():
     parser.add_argument("-temperature", type=float, default=0.0)
     parser.add_argument("-precision", type=str, default="auto")
     parser.add_argument(
-        "-backend", type=str, choices=["vllm", "hf", "lmdeploy", "api", "ollama"], required=True
+        "-backend", type=str, choices=["vllm", "api", "ollama"], required=True
     )
     parser.add_argument("-task", type=str, choices=eval_func_map.keys(), required=True)
 
@@ -158,10 +158,6 @@ def main():
     # run inference command
     if args.backend == "vllm":
         inference_script = "src/utils/run_vllm_model.py"
-    elif args.backend == "hf":
-        inference_script = "src/utils/run_hf_model.py"
-    elif args.backend == "lmdeploy":
-        inference_script = "src/utils/run_lmdeploy_model.py"
     elif args.backend == "ollama":
         inference_script = "src/utils/run_ollama_model.py"
     # "api": claude or gpt models
