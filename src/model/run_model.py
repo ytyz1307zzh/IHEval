@@ -50,20 +50,13 @@ EXIT_EVAL_TASKS = ["single-turn", "multi-turn"]
 
 def extract_output(args, example):
     if args.backend == "api":
-        if "claude" in args.model:
-            try:
-                return example["output"]["content"][0]["text"].strip()
-            except (IndexError, KeyError):
-                return ""  # If Claude does not return any output, use empty string
-        elif "gpt" in args.model:
+        if "gpt" in args.model:
             if example['output'] is not None:
                 return example["output"].strip()
             else:
                 return ""
-        elif "llama" in args.model:
-            return example["output"]['generation'].strip()
-        elif "mistral-large" in args.model:
-            return example["output"]["choices"][0]['message']['content'].strip()
+        else:
+            raise NotImplementedError
 
     else:
         return example["output"].strip()
@@ -99,9 +92,12 @@ def main():
     parser.add_argument("-temperature", type=float, default=0.0)
     parser.add_argument("-precision", type=str, default="auto")
     parser.add_argument(
-        "-backend", type=str, choices=["vllm", "api", "ollama"], required=True
+        "-backend", type=str, choices=["vllm", "api"], required=True
     )
     parser.add_argument("-task", type=str, choices=eval_func_map.keys(), required=True)
+
+    # vllm arguments
+    parser.add_argument("-tensor_parallel", type=int, default=1)
 
     # API call arguments
     parser.add_argument("-max_loop", type=int, default=2)
@@ -158,9 +154,7 @@ def main():
     # run inference command
     if args.backend == "vllm":
         inference_script = "src/utils/run_vllm_model.py"
-    elif args.backend == "ollama":
-        inference_script = "src/utils/run_ollama_model.py"
-    # "api": claude or gpt models
+    # "api": gpt models
     elif args.backend == "api":
         inference_script = "src/utils/call_api.py"
     else:
@@ -184,9 +178,9 @@ def main():
             f" -max_threads {args.max_threads}"
             f" -sleep {args.sleep}"
         )
-    elif args.backend == "ollama":
+    elif args.backend == "vllm":
         inference_command += (
-            f" -max_threads {args.max_threads}"
+            f" -tensor_parallel {args.tensor_parallel}"
         )
 
     # Run inference (if inference was done before, the script will skip running the model)

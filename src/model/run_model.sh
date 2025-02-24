@@ -1,62 +1,35 @@
 # export CUDA_VISIBLE_DEVICES="0,1,2,3"
 # Make sure to add OpenAI API key to the environment variable OPENAI_API_KEY
 
-domains=($(find benchmark -mindepth 1 -maxdepth 1 -type d | xargs -n 1 basename))
+# Change this to specify which category(domain) of tasks to run
+domains=($(find benchmark -mindepth 1 -maxdepth 1 -type d | xargs -n 1 basename))  # run all categories
+# domains=(tool-use)  # only run tool-use tasks
 
-model_list=(mistral-7b)
+# Change this to modify which model to run
+model_list=(llama3.1-8b llama3.1-70b mistral-7b gpt-4o-mini-2024-07-18)
 
 for domain in ${domains[@]}; do
 
-    system_tasks=($(find benchmark/${domain} -mindepth 1 -maxdepth 1 -type d | xargs -n 1 basename))
+    # Change this to specify which task to run
+    system_tasks=($(find benchmark/${domain} -mindepth 1 -maxdepth 1 -type d | xargs -n 1 basename))  # run all tasks
+    # system_tasks=(slack-user)
 
     for system_task in ${system_tasks[@]}; do
 
         for model in ${model_list[@]}; do
             
-            if [ "$model" = "llama3-8b" ]; then
+            if [ "$model" = "llama3.1-8b" ]; then
                 model_family=llama
-                model_path=meta.llama3-8b-instruct-v1:0
-                script_type=api
-            elif [ "$model" = "llama3-70b" ]; then
-                model_family=llama
-                model_path=meta.llama3-70b-instruct-v1:0
-                script_type=api
-            elif [ "$model" = "llama3.1-8b" ]; then
-                model_family=llama
-                model_path=meta.llama3-1-8b-instruct-v1:0
-                script_type=api
+                model_path=meta-llama/Llama-3.1-8B-Instruct
+                script_type=vllm
             elif [ "$model" = "llama3.1-70b" ]; then
                 model_family=llama
-                model_path=meta.llama3-1-70b-instruct-v1:0
-                script_type=api
-            elif [ "$model" = "llama3.1-405b" ]; then
-                model_family=llama
-                model_path=meta.llama3-1-405b-instruct-v1:0
-                script_type=api
+                model_path=meta-llama/Llama-3.1-70B-Instruct
+                script_type=vllm
             elif [ "$model" = "mistral-7b" ]; then
                 model_family=mistral
-                model_path=mistral:7b-instruct-v0.3-fp16
-                script_type=ollama
-            elif [ "$model" = "mistral-large-2" ]; then
-                model_family=mistral
-                model_path=mistral.mistral-large-2407-v1:0
-                script_type=api
-            elif [ "$model" = "qwen2-7b" ]; then
-                model_family=qwen
-                model_path=qwen2:7b-instruct-fp16
-                script_type=ollama
-            elif [ "$model" = "qwen2-72b" ]; then
-                model_family=qwen
-                model_path=qwen2:72b-instruct-fp16
-                script_type=ollama
-            elif [ "$model" = "claude3-sonnet" ]; then
-                model_family=claude
-                model_path=anthropic.claude-3-sonnet-20240229-v1:0
-                script_type=api
-            elif [ "$model" = "claude3-haiku" ]; then
-                model_family=claude
-                model_path=anthropic.claude-3-haiku-20240307-v1:0
-                script_type=api
+                model_path=mistralai/Mistral-7B-Instruct-v0.3
+                script_type=vllm
             elif [[ "$model" == gpt* ]]; then
                 model_family=gpt
                 model_path=${model}
@@ -68,6 +41,7 @@ for domain in ${domains[@]}; do
 
             # Find all data directories for the given task
             folders=($(find benchmark/${domain}/${system_task} -mindepth 2 -maxdepth 2 -type d | awk -F '/' '{print $(NF-1)"/"$NF}'))
+            # If only evaluating specific settings, e.g., the aligned setting, change to folders=(aligned/default)
 
             for folder in ${folders[@]}; do
 
@@ -75,6 +49,8 @@ for domain in ${domains[@]}; do
 
                 OUTPUT_DIR=benchmark/${domain}/${system_task}/${folder}/${model_family}/${model}
 
+                # For vllm only: tensor_parallel
+                # For API call only: max_retries, max_threads, sleep
                 python src/model/run_model.py \
                     -model ${model_path} \
                     -input benchmark/${domain}/${system_task}/${folder}/input_data.json \

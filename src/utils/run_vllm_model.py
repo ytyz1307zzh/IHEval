@@ -5,9 +5,63 @@ Generate text using open-source model and vLLM
 import os
 import json
 import argparse
+from typing import Dict
 
 import vllm
 import torch
+import pdb
+
+
+# Function descriptions for open-source models
+def get_users_in_channel(channel: str) -> str:
+    """
+    Gets the user list of the given Slack channel.
+
+    Args:
+        channel: The Slack channel name.
+    Returns:
+        A string indicating the user names in the channel.
+    """
+    return None
+
+
+def get_webpage_text_content(url: str) -> str:
+    """
+    Gets the content of the webpage at a given URL, and returns the text content on the webpage.
+
+    Args:
+        url: The URL of the webpage.
+    Returns:
+        The text content of the webpage.
+    """
+    return None
+
+
+TOOL2FUNCTION_MAP = {
+    "get_users_in_channel": get_users_in_channel,
+    "get_webpage_text_content": get_webpage_text_content
+}
+
+
+def prepare_tool_call(tool: Dict):
+    tool_name = tool['definition']['name']
+    tool_definition = TOOL2FUNCTION_MAP[tool_name]  # In HF, the tool definition is a python function
+
+    tool_call = {
+        "name": tool['call']['name'],
+        "arguments": tool['call']['arguments']
+    }
+    tool_call = {"role": "assistant", "tool_calls": [{"id": "9Ae3bDc2F", "type": "function", "function": tool_call}]}  # "id" is for Mistral
+
+    tool_return = {
+        "role": "tool",
+        "tool_call_id": "9Ae3bDc2F",  # For mistral
+        "name": tool['return']['name'],
+        "content": tool['return']['content']
+    }
+
+    return tool_definition, tool_call, tool_return
+
 
 
 def fix_bos(chat_message, bos_token):
@@ -55,8 +109,18 @@ def main(args):
 
     input_messages = []
     for example in data:
+
+        messages = example['messages']
+
+        if "tool" in example.keys():
+            tool_definition, tool_call, tool_return = prepare_tool_call(example["tool"])
+            messages.extend([tool_call, tool_return])
+
         chat_message = tokenizer.apply_chat_template(
-            example["messages"], tokenize=False, add_generation_prompt=True
+            messages,
+            tokenize=False,
+            add_generation_prompt=True,
+            tools=[tool_definition] if "tool" in example.keys() else None,
         )
         if tokenizer.bos_token:
             chat_message = fix_bos(chat_message, tokenizer.bos_token)
