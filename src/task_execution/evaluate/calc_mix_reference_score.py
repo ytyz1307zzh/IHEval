@@ -24,6 +24,9 @@ for example in data:
     id_ = example['id']
     example['answer'] = example['answer']['content']
 
+    if isinstance(example['answer'], list) and len(example['answer']) == 1:
+        example['answer'] = example['answer'][0]
+
     if id_ == "verb_extraction_strong_tool_instruction":
         example['id'] = "strong_user_instruction"
         verb_extraction_results.append(example)
