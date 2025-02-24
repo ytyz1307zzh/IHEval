@@ -1,5 +1,9 @@
 """
 Generate text using open-source model and ollama
+
+Note by Zhihan: This file was the original code to run open-source models when writing IHEval.
+At that time, Llama models were run using Amazon's API so only mistral-7b and qwen2 models were run with this code.
+It is now recommended to use `run_vllm_model.py` to run open-source models on IHEval.
 """
 
 import os
@@ -259,7 +263,9 @@ if __name__ == "__main__":
     ) as executor:
         if args.model.startswith("mistral:7b"):
             executor.map(call_mistral, dataset)
-        else:
+        elif args.model.startswith("qwen2"):
             executor.map(call_ollama, dataset)
+        else:
+            raise NotImplementedError
 
     convert_jsonl_to_json(args.output)

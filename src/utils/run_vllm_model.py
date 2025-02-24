@@ -8,8 +8,6 @@ import argparse
 from typing import Dict
 
 import vllm
-import torch
-import pdb
 
 
 # Function descriptions for open-source models
@@ -122,6 +120,7 @@ def main(args):
             add_generation_prompt=True,
             tools=[tool_definition] if "tool" in example.keys() else None,
         )
+        # Fix the repetitive bos issue in vllm
         if tokenizer.bos_token:
             chat_message = fix_bos(chat_message, tokenizer.bos_token)
         input_messages.append(chat_message)

@@ -70,7 +70,7 @@ for domain in ${domains[@]}; do
 
                 echo -e "\e[32m--------------------- Process Scores ---------------------\e[0m"
 
-                # For tool use, we may need to calculate the aggregated score of three NLP tasks
+                # For tool use (get-webpage task), we need to calculate the aggregated score of three NLP tasks
                 if [ "$system_task" = "get-webpage" ] ; then
                     if [ "$folder" = "reference/default" ] ; then
                         python src/task_execution/evaluate/calc_mix_reference_score.py \
@@ -92,7 +92,7 @@ for domain in ${domains[@]}; do
                         -task ${system_task} \
                         -record_dir model-scores
                 
-                # For recording the model scores
+                # For recording the model scores to a file
                 else
                     python src/model/record_scores.py \
                         -data benchmark/${domain}/${system_task}/${folder}/${model_family}/${model}/eval_results.json \
@@ -101,7 +101,7 @@ for domain in ${domains[@]}; do
 
             done
 
-            # Aggregate the scores of all the tasks for a single model
+            # Aggregate the scores of all the tasks for this model to get the final IHEval score and print it to the console
             python src/model/average_final_score.py \
                 -record model-scores/${model}.json \
                 -output model-scores/overall/overall_${model}.json
