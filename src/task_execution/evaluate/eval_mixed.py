@@ -13,10 +13,6 @@ def eval_mixed(answer, prediction, loose=False):
 
     eval_func = eval_func_map[task]
     accept_loose_score = 'loose' in inspect.signature(eval_func).parameters
-
-    if isinstance(answer['content'], list) and len(answer['content']) == 1:
-        answer['content'] = answer['content'][0]
-    
     if loose and accept_loose_score:
         return eval_func(answer['content'], prediction, loose=True)
     else:
